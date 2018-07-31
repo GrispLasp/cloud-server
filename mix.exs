@@ -5,7 +5,7 @@ defmodule Cloudserver.MixProject do
     [
       app: :cloudserver,
       version: "0.1.0",
-      elixir: "~> 1.6",
+      elixir: "~> 1.7.1",
       start_permanent: Mix.env() == :prod,
       deps: deps()
       # dialyzer: [
@@ -28,7 +28,8 @@ defmodule Cloudserver.MixProject do
         :cowboy,
         :plug,
         :partisan,
-        :lasp
+        :lasp,
+        :node
       ],
       extra_applications: [:logger]
     ]
@@ -38,9 +39,11 @@ defmodule Cloudserver.MixProject do
   defp deps do
     [
       {:cowboy, "~> 2.4.0"},
-      {:lasp, "~> 0.8.2"},
+      {:lasp, "~> 0.8.2", override: true},
+      {:lager, git: "https://github.com/erlang-lager/lager.git", branch: "master", override: true},
       # {:types, "~> 0.1.8", override: true},
       {:partisan, git: "https://github.com/GrispLasp/partisan.git", override: true},
+      {:node, git: "https://github.com/GrispLasp/cloud-lasp.git", branch: "master"},
       {:poison, "~> 3.1"},
       {:plug, "~> 1.5.1"},
       # {:cors_plug, "~> 1.5"},

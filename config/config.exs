@@ -9,6 +9,13 @@ config :cloudserver,
     # mode: :computation_only
     # mode: :full
 
+config :node,
+  primary_workers: [:node_utils_server],
+  distributed_workers: [
+      :generic_tasks_server,
+      :generic_tasks_worker
+  ]
+
 config :lasp,
   membership: false,
   mode: :delta_based,

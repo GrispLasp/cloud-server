@@ -21,12 +21,23 @@ defmodule Cloudserver do
     Logger.info("#{inspect Node.self()}")
     Logger.info("#{inspect Node.get_cookie()}")
 
+    # :node_app.start(:a, :b)
+    # :node_generic_tasks_server.start_link
+    # :node_generic_tasks_worker.start_link
+    # :node_utils_server.start_link
+    # :node_generic_tasks_worker.start_all_tasks
+
+    :node_generic_tasks_server.add_task({:task1, :all, fn -> IO.puts "hello all" end})
+
+
+
     children = [
       {Plug.Adapters.Cowboy2, scheme: :http, plug: Cloudserver.Router, options: [port: port()]}
     ]
 
 
     Cloudserver.Supervisor.start_link(name: Cloudserver.Supervisor)
+
     Supervisor.start_link(children, strategy: :one_for_one)
   end
 
