@@ -19,9 +19,10 @@ defmodule Cloudserver.Supervisor do
                 {Cloudserver.NodeClient, name: Cloudserver.NodeClient},
                 {Cloudserver.Regression, name: Cloudserver.Regression}
             ]
-        :test ->
+        :server ->
             [
-                {Cloudserver.NodePinger, name: Cloudserver.NodePinger}
+                {Cloudserver.NodePinger, name: Cloudserver.NodePinger},
+                {Cloudserver.NodeClient, name: Cloudserver.NodeClient}
             ]
         _ ->
             []

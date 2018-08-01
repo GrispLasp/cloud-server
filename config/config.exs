@@ -5,7 +5,7 @@ use Mix.Config
 config :cloudserver,
     port: 4000,
     remote_hosts: ["${REMOTE_HOST_1}"],
-    mode: :test
+    mode: :server
     # mode: :computation_only
     # mode: :full
 
