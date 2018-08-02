@@ -6,7 +6,7 @@ services:
       - HOST=$HOST
       - NODE_NAME=$NODE_NAME
       - REMOTE_HOST_1=$REMOTE_HOST_1
-      - PEER_PORT=$PEER_PORT
+      - REMOTE_HOST_2=$REMOTE_HOST_2
       - REPLACE_OS_VARS=true
     ports:
       - "80:80"

@@ -18,7 +18,7 @@ PROFILE_NAME=grisplasp-us
 # it's easy to change for a different project. AWS_ECS_URL should be the
 # base url.
 AWS_ECS_URL=964858913990.dkr.ecr.us-east-1.amazonaws.com
-AWS_ECS_PROJECT_NAME=webserver
+AWS_ECS_PROJECT_NAME=cloudserver
 AWS_ECS_CONTAINER_NAME=grisplasp
 AWS_ECS_DOCKER_IMAGE=grisplasp:latest
 AWS_ECS_CLUSTER_NAME=grisplasp-us
@@ -32,6 +32,7 @@ AWS_ECS_CLUSTER_NAME=grisplasp-us
 NODE_NAME=server2
 HOST=ec2-18-206-71-67.compute-1.amazonaws.com
 REMOTE_HOST_1=server1@ec2-18-185-18-147.eu-central-1.compute.amazonaws.com
+REMOTE_HOST_2=server3@ec2-54-255-142-12.ap-southeast-1.compute.amazonaws.com
 
 # Build container.
 # As we did before, but now we are going to build the Docker image that will
@@ -65,6 +66,7 @@ sed \
   -e 's/$HOST/'$HOST'/g' \
   -e 's/$NODE_NAME/'$NODE_NAME'/g' \
   -e 's/$REMOTE_HOST_1/'$REMOTE_HOST_1'/g' \
+  -e 's/$REMOTE_HOST_2/'$REMOTE_HOST_2'/g' \
   docker-compose.yml.template \
   > docker-compose.yml
 

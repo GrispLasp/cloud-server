@@ -10,26 +10,26 @@ set -e
 # AWS_DEFAULT_REGION is the code for the aws region you chose, e.g., eu-west-2.
 AWS_ACCESS_KEY_ID=$1
 AWS_SECRET_ACCESS_KEY=$2
-AWS_DEFAULT_REGION=eu-central-1
-PROFILE_NAME=grisplasp-eu
+AWS_DEFAULT_REGION=ap-southeast-1
+PROFILE_NAME=grisplasp-ap
 
 # Set AWS ECS vars.
 # Here you only need to set AWS_ECS_URL. I have created the others so that
 # it's easy to change for a different project. AWS_ECS_URL should be the
 # base url.
-AWS_ECS_URL=964858913990.dkr.ecr.eu-central-1.amazonaws.com
+AWS_ECS_URL=964858913990.dkr.ecr.ap-southeast-1.amazonaws.com
 AWS_ECS_PROJECT_NAME=cloudserver
 AWS_ECS_CONTAINER_NAME=grisplasp
 AWS_ECS_DOCKER_IMAGE=grisplasp:latest
-AWS_ECS_CLUSTER_NAME=grisplasp-eu-central-1
+AWS_ECS_CLUSTER_NAME=grisplasp-ap
 
 
 # Set runtime ENV.
 # These are the runtime environment variables.
-NODE_NAME=server1
-HOST=ec2-18-185-18-147.eu-central-1.compute.amazonaws.com
+NODE_NAME=server3
+HOST=ec2-54-255-142-12.ap-southeast-1.compute.amazonaws.com
 REMOTE_HOST_1=server2@ec2-18-206-71-67.compute-1.amazonaws.com
-REMOTE_HOST_2=server3@ec2-54-255-142-12.ap-southeast-1.compute.amazonaws.com
+REMOTE_HOST_2=server1@ec2-18-185-18-147.eu-central-1.compute.amazonaws.com
 
 
 

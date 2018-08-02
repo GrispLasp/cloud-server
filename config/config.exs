@@ -4,13 +4,15 @@ use Mix.Config
 
 config :cloudserver,
     port: 4000,
-    remote_hosts: ["${REMOTE_HOST_1}"],
+    remote_hosts: ["${REMOTE_HOST_1}","${REMOTE_HOST_2}"],
     mode: :server
     # mode: :computation_only
     # mode: :full
 
 config :node,
-  primary_workers: [:node_utils_server],
+  primary_workers: [
+    # :node_utils_server
+    ],
   distributed_workers: [
       :generic_tasks_server,
       :generic_tasks_worker

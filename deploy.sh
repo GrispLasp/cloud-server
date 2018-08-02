@@ -4,3 +4,4 @@
 
 sh deploy-eu.sh $1 $2
 sh deploy-us.sh $1 $2
+sh deploy-ap.sh $1 $2

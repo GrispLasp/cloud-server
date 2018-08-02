@@ -36,7 +36,7 @@ defmodule Cloudserver.NodePinger do
     Logger.info "Connected node list is #{inspect Node.list} and I am #{inspect Node.self}"
     Logger.info("[Partisan] I am: #{inspect :partisan_peer_service_manager.myself}")
     Logger.info "[Partisan] Cluster membership is: #{inspect :lasp_peer_service.members()}"
-    remote_nodes_list = Application.get_env(:webserver, :remote_hosts, [])
+    remote_nodes_list = Application.get_env(:cloudserver, :remote_hosts, [])
     Logger.info "Remote nodes: #{inspect remote_nodes_list}"
     for remote_node <- remote_nodes_list, Node.connect(String.to_atom(remote_node)) == true, do: fn remote_node ->
       Logger.info "Trying to join remote node #{inspect remote_node}"
@@ -56,7 +56,8 @@ defmodule Cloudserver.NodePinger do
   def get_remote_ip(remote_name) do
     remote_nodes = %{
       :'server1@ec2-18-185-18-147.eu-central-1.compute.amazonaws.com' => {18,185,18,147},
-      :'server2@ec2-18-206-71-67.compute-1.amazonaws.com' => {18,206,71,67}
+      :'server2@ec2-18-206-71-67.compute-1.amazonaws.com' => {18,206,71,67},
+      :'server3@ec2-54-255-142-12.ap-southeast-1.compute.amazonaws.com' => {54,255,142,12}
     }
     remote_nodes[remote_name]
 

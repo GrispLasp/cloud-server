@@ -1,12 +1,12 @@
 version: '3'
 services:
   grisplasp:
-    image: '964858913990.dkr.ecr.us-east-1.amazonaws.com/grisplasp:latest'
+    image: '964858913990.dkr.ecr.ap-southeast-1.amazonaws.com/grisplasp:latest'
     environment:
-      - HOST=ec2-18-206-71-67.compute-1.amazonaws.com
-      - NODE_NAME=server2
-      - REMOTE_HOST_1=server1@ec2-18-185-18-147.eu-central-1.compute.amazonaws.com
-      - PEER_PORT=$PEER_PORT
+      - HOST=ec2-54-255-142-12.ap-southeast-1.compute.amazonaws.com
+      - NODE_NAME=server3
+      - REMOTE_HOST_1=server2@ec2-18-206-71-67.compute-1.amazonaws.com
+      - REMOTE_HOST_2=server1@ec2-18-185-18-147.eu-central-1.compute.amazonaws.com
       - REPLACE_OS_VARS=true
     ports:
       - "80:80"

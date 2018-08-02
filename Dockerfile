@@ -13,7 +13,7 @@ RUN export MIX_ENV=prod && \
     mix release
 
 #Extract Release archive to /rel for copying in next stage
-RUN APP_NAME="webserver" && \
+RUN APP_NAME="cloudserver" && \
     RELEASE_DIR=`ls -d _build/prod/rel/$APP_NAME/releases/*/` && \
     mkdir /export && \
     tar -xf "$RELEASE_DIR/$APP_NAME.tar.gz" -C /export
@@ -45,8 +45,8 @@ USER default
 #export PUBLIC_HOSTNAME=`curl -s http://169.254.169.254/latest/meta-data/public-hostname`
 
 #Set default entrypoint and command
-ENTRYPOINT ["/opt/app/bin/webserver"]
+ENTRYPOINT ["/opt/app/bin/cloudserver"]
 
 CMD ["foreground"]
 
-#CMD ["/webserver/bin/webserver", "foreground"]
+#CMD ["/webserver/bin/cloudserver", "foreground"]
