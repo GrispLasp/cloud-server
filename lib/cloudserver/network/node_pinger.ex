@@ -51,13 +51,13 @@ defmodule Cloudserver.NodePinger do
       remote_node
     end.(remote_node)
   end
-
+  
 
   def get_remote_ip(remote_name) do
     remote_nodes = %{
       :'server1@ec2-18-185-18-147.eu-central-1.compute.amazonaws.com' => {18,185,18,147},
-      :'server2@ec2-18-206-71-67.compute-1.amazonaws.com' => {18,206,71,67},
-      :'server3@ec2-54-255-142-12.ap-southeast-1.compute.amazonaws.com' => {54,255,142,12}
+      :'server2@ec2-18-130-232-107.eu-west-2.compute.amazonaws.com' => {18,130,232,107},
+      :'server3@ec2-35-180-138-155.eu-west-3.compute.amazonaws.com' => {35,180,138,155}
     }
     remote_nodes[remote_name]
 
