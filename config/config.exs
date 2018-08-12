@@ -10,33 +10,35 @@ config :cloudserver,
     # mode: :full
 
 config :node,
+  evaluation_mode: :backupxcloudlasp,
   primary_workers: [
-    # :node_utils_server
+     :node_utils_server
     ],
   distributed_workers: [
       :generic_tasks_server,
-      :generic_tasks_worker
+      :generic_tasks_worker,
+      :node_benchmark_server
   ]
 
 config :lasp,
   membership: false,
-  mode: :delta_based,
+  mode: :state_based,
   storage_backend: :lasp_ets_storage_backend,
-  delta_interval: 10000,
-  plumtree_peer_refresh_interval: 2000,
-  state_sync_interval:  2000
+  #delta_interval: 1000,
+  #propagate_on_update: true,
+  plumtree_peer_refresh_interval: 1000,
+  state_sync_interval:  1000
 
 config :plumtree,
   broadcast_exchange_timer: 2000,
   broadcast_mods: [:lasp_plumtree_backend]
 
 config :partisan,
-  partisan_peer_service_manager: :partisan_hyparview_peer_service_manager,
-  channels: [1,2]
-# config :lager,
-#   handlers: [
-#     level: :critical
-#   ]
+  partisan_peer_service_manager: :partisan_hyparview_peer_service_manager
+ config :lager,
+   handlers: [
+     level: :debug
+   ]
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
@@ -54,7 +56,7 @@ config :partisan,
 #
 # You can also configure a 3rd-party app:
 #
-#     config :logger, level: :info
+   config :logger, level: :warn
 #
 
 # It is also possible to import configuration files, relative to this

@@ -10,6 +10,12 @@ defmodule Cloudserver.NodePinger do
   ## Server Callbacks
 
   def init(:ok) do
+    port  = :partisan_config.get(:peer_port)
+    remote_node = Node.self
+    tuple = %{:ip => get_remote_ip(remote_node),:port => port}
+    result = :partisan_config.set(:listen_addrs,[tuple])
+    get = :partisan_config.get(:listen_addrs)
+    Logger.info "Current listen_addrs attribute is set to #{inspect get}"
     Process.send_after(self(), {:join_remote_nodes}, 10000)
     {:ok, %{}}
   end
@@ -51,7 +57,7 @@ defmodule Cloudserver.NodePinger do
       remote_node
     end.(remote_node)
   end
-  
+
 
   def get_remote_ip(remote_name) do
     remote_nodes = %{
